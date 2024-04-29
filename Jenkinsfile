@@ -10,12 +10,15 @@ pipeline {
         }
         stage('Execute Shell Script') {
             steps {
-                try {
-                    sh './your_script.sh'
-                } catch (Exception e) {
-                    error("Failed to execute shell script: ${e.message}")
+                script {
+                    try {
+                        sh './your_script.sh'
+                    } catch (Exception e) {
+                        error("Failed to execute shell script: ${e.message}")
+                    }
                 }
             }
         }
     }
 }
+
