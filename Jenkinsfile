@@ -10,7 +10,7 @@ pipeline {
                         // Checkout code from Git repository implicitly by executing the shell script
                         sh 'git clone https://github.com/Kaif1437/FulcrumPrac.git'
                         // Run shell script
-                        sh './fulcrum.sh'
+                        sh './FulcrumPrac/fulcrum.sh'
                     } catch (Exception e) {
                         error("Failed to execute shell script: ${e.message}")
                     }
