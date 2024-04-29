@@ -2,21 +2,19 @@ pipeline {
     agent {
         label 'node1'
     }
-
     stages {
-        stage('Install Nginx on Host Server') {
+        stage('Checkout') {
             steps {
-                sh 'ssh kaif@192.168.225.172 "sudo apt update && sudo apt install -y nginx"'
+                git 'https://github.com/Kaif1437/FulcrumPrac.git'
             }
         }
-        stage('Update Index.html') {
+        stage('Execute Shell Script') {
             steps {
-                sh 'ssh kaif@192.168.225.172 "echo \'<!DOCTYPE html><html><head><title>Welcome</title></head><body><h1><strong>WELCOME TO FULCRUM</strong></h1></body></html>\' | sudo tee /var/www/html/index.html"'
-            }
-        }
-        stage('Restart Nginx') {
-            steps {
-                sh 'ssh kaif@192.168.225.172 "sudo systemctl restart nginx"'
+                try {
+                    sh './your_script.sh'
+                } catch (Exception e) {
+                    error("Failed to execute shell script: ${e.message}")
+                }
             }
         }
     }
