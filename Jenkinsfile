@@ -2,12 +2,12 @@ pipeline {
     agent {
         label 'node1'
     }
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Kaif1437/FulcrumPrac.git'
-            }
-        }
+   // stages {
+   //     stage('Checkout') {
+   //         steps {
+   //             git 'https://github.com/Kaif1437/FulcrumPrac.git'
+   //         }
+   //     }
         stage('Execute Shell Script') {
             steps {
                 script {
